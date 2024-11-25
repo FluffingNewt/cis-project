@@ -5,6 +5,7 @@ drop table [Courses];
 drop table [Students];
 drop table [Instructors];
 drop table [CollegeCodes];
+drop table [Prerequisities];
 
 
 create table CollegeCodes (
@@ -66,10 +67,18 @@ create table Enrollments (
 	FOREIGN KEY (instructorID) references Instructors(instructorID)
 );
 
-
+CREATE TABLE Prerequisities(
+	prerequisiteID INT PRIMARY KEY IDENTITY(1,1),
+	courseID VARCHAR(10) NOT NULL,
+	prerequisiteCourseID VARCHAR(10),
+	description VARCHAR(255),
+	FOREIGN KEY(courseID) REFERENCES Courses(courseID),
+	FOREIGN KEY(prerequisiteCourseID) REFERENCES Courses(courseID)
+);
 
 select * from [Courses];
 select * from [Instructors];
 select * from [Students];
 select * from [Enrollments];
 select * from [CollegeCodes];
+select * from [Prerequisities];
