@@ -1,15 +1,20 @@
 package cis;
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
+
 import javax.swing.table.DefaultTableModel;
+import javax.swing.filechooser.*;
 import enums.Tables;
 import util.DatabaseConnector;
+import util.FileIO;
 
 public class QueryPanel extends JPanel {
 
     private DatabaseConnector dbc = new DatabaseConnector();
 
     private Tables table;
+    private JTable tableData;
 
     public QueryPanel(String tabName) {
         setLayout(new BorderLayout());
@@ -29,21 +34,42 @@ public class QueryPanel extends JPanel {
         displayTableData();
     }
 
+
+
     private void displayTableData() {
-        JTable t = new JTable();
-        JScrollPane sp = new JScrollPane(t);
+        tableData = new JTable();
+        JScrollPane scrollPane = new JScrollPane(tableData);
 
         try {
             DefaultTableModel tableModel = dbc.getQueryData(this.table);
-            t.setModel(tableModel);
-
+            tableData.setModel(tableModel);
         } catch (Exception e) {
             JLabel errorLabel = new JLabel("Error retrieving data: " + e.getMessage(), SwingConstants.CENTER);
             removeAll();
             add(errorLabel, BorderLayout.CENTER);
         }
 
-        add(sp, BorderLayout.CENTER);
+        add(scrollPane, BorderLayout.CENTER);
+    }
+
+
+
+    public void exportToCSV() {
+        JFileChooser fileChooser = new JFileChooser();
+
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("CSV Files", "csv");
+        fileChooser.setFileFilter(filter);
+        fileChooser.setSelectedFile(new File("export.csv"));
+        
+        int option = fileChooser.showSaveDialog(this);
+        if (option == JFileChooser.APPROVE_OPTION) {
+            String filePath = fileChooser.getSelectedFile().getAbsolutePath();
+
+            if (!filePath.endsWith(".csv")) filePath += ".csv";
+
+            if (tableData != null) FileIO.exportTableToCSV(tableData, filePath);
+            else JOptionPane.showMessageDialog(this, "No data to export.");
+        }
     }
 
 }

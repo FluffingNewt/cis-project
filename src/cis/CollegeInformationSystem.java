@@ -15,15 +15,29 @@ public class CollegeInformationSystem {
         SwingUtilities.invokeLater(() -> {
             JFrame frame = new JFrame("College Management System");
             frame.setSize(800, 600);
+            
+
+            JTabbedPane tabbedPane = new JTabbedPane();
+            tabbedPane.addTab("Enrollments"   , new QueryPanel("Enrollments"));
+            tabbedPane.addTab("Courses"       , new QueryPanel("Courses"));
+            tabbedPane.addTab("Prerequisites" , new QueryPanel("Prerequisites"));
+            tabbedPane.addTab("Students"      , new QueryPanel("Students"));
+            tabbedPane.addTab("Instructors"   , new QueryPanel("Instructors"));
+            tabbedPane.addTab("CollegeCodes"  , new QueryPanel("CollegeCodes"));
+            tabbedPane.setUI(new CustomTabbedPaneUI());
 
             // Create menu bar
             JMenuBar menuBar = new JMenuBar();
             
             // "File" menu
             JMenu fileMenu = new JMenu("File");
-            // JMenuItem exitItem = new JMenuItem("Exit");
-            // exitItem.addActionListener(e -> System.exit(0));
-            // fileMenu.add(exitItem);
+            JMenuItem exportCSVItem = new JMenuItem("Export as CSV");
+            exportCSVItem.addActionListener(e -> {
+                if (tabbedPane.getSelectedComponent() instanceof QueryPanel) {
+                    ((QueryPanel) tabbedPane.getSelectedComponent()).exportToCSV();
+                }
+            });
+            fileMenu.add(exportCSVItem);
             
 
             // "Edit" menu
@@ -36,16 +50,6 @@ public class CollegeInformationSystem {
             
             menuBar.add(fileMenu);
             menuBar.add(editMenu);
-            
-
-            JTabbedPane tabbedPane = new JTabbedPane();
-            tabbedPane.addTab("Enrollments", new QueryPanel("Enrollments"));
-            tabbedPane.addTab("Courses", new QueryPanel("Courses"));
-            tabbedPane.addTab("Prerequisites", new QueryPanel("Prerequisites"));
-            tabbedPane.addTab("Students", new QueryPanel("Students"));
-            tabbedPane.addTab("Instructors", new QueryPanel("Instructors"));
-            tabbedPane.addTab("CollegeCodes", new QueryPanel("CollegeCodes"));
-            tabbedPane.setUI(new CustomTabbedPaneUI());
 
             frame.setJMenuBar(menuBar);
             frame.add(tabbedPane, BorderLayout.CENTER);
@@ -77,4 +81,9 @@ public class CollegeInformationSystem {
             if (!isSelected) super.paintTabBorder(g, tabPlacement, tabIndex, x, y, w, h, isSelected);
         }
     }
+
+
+
+
+
 }
