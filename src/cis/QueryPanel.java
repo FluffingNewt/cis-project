@@ -4,7 +4,6 @@ import java.awt.*;
 import java.io.File;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumnModel;
 import javax.swing.filechooser.*;
 import enums.TableEnum;
 import util.DatabaseConnector;

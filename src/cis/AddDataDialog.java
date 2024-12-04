@@ -2,22 +2,17 @@ package cis;
 import util.DatabaseConnector;
 import enums.TableEnum;
 import javax.swing.*;
-
 import java.awt.*;
 import java.util.ArrayList;
 
 public class AddDataDialog extends JDialog {
     private TableEnum tableEnum;
-    private JTable tableData;
     private ArrayList<JTextField> inputFields;
-    private DatabaseConnector dbc;
 
     public AddDataDialog(JFrame parent, JTabbedPane tabbedPane, TableEnum tEnum, JTable table, DatabaseConnector dbc) {
         super(parent, "Add Row Data", true);
         this.tableEnum = tEnum;
-        this.tableData = table;
         this.inputFields = new ArrayList<>();
-        this.dbc = dbc;
         
         setLayout(new BorderLayout());
         setSize(400, 350);
@@ -61,7 +56,7 @@ public class AddDataDialog extends JDialog {
         add(buttonPanel, BorderLayout.SOUTH);
 
         // Add action listeners
-        submitButton.addActionListener(e -> {
+        submitButton.addActionListener(_ -> {
 
             if (anyEmptyFiles()) {
                 JOptionPane.showMessageDialog(
@@ -80,9 +75,7 @@ public class AddDataDialog extends JDialog {
 
         });
 
-        cancelButton.addActionListener(e -> dispose());
-
-        setVisible(true);
+        cancelButton.addActionListener(_ -> dispose());
     }
 
     public boolean anyEmptyFiles() {

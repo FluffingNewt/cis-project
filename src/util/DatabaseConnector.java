@@ -14,9 +14,7 @@ public class DatabaseConnector {
 	private final static String PASS = "c3s!c2Cld";
     private final static String DATABASE = "databaseName=CSC312-CISTeamProject;";
 
-    /**
-     * Constructor initializes the database connection.
-     */
+    
     public DatabaseConnector() {
         try { connection = DriverManager.getConnection(URL + DATABASE, USER, PASS); }
         catch (SQLException e) { System.err.println("Failed to connect to the database: " + e.getMessage()); }

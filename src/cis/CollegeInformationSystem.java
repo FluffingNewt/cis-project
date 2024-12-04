@@ -1,11 +1,9 @@
 package cis;
 import enums.TableEnum;
 import util.DatabaseConnector;
-
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.plaf.basic.BasicTabbedPaneUI;
-import javax.swing.table.TableModel;
 
 
 public class CollegeInformationSystem {
@@ -36,7 +34,7 @@ public class CollegeInformationSystem {
             // "File" menu
             JMenu fileMenu = new JMenu("File");
             JMenuItem exportCSVItem = new JMenuItem("Export as CSV");
-            exportCSVItem.addActionListener(e -> {
+            exportCSVItem.addActionListener(_ -> {
                 if (tabbedPane.getSelectedComponent() instanceof QueryPanel) {
                     ((QueryPanel) tabbedPane.getSelectedComponent()).exportToCSV();
                 }
@@ -47,13 +45,14 @@ public class CollegeInformationSystem {
             // "Edit" menu
             JMenu editMenu = new JMenu("Edit");
             JMenuItem addDataItem = new JMenuItem("Add table row data");
-            addDataItem.addActionListener(e -> {
+            addDataItem.addActionListener(_ -> {
                 if (tabbedPane.getSelectedComponent() instanceof QueryPanel) {
                     TableEnum tableEnum = ((QueryPanel) tabbedPane.getSelectedComponent()).getTableEnum();
                     JTable tableData = ((QueryPanel) tabbedPane.getSelectedComponent()).getTableData();
                     DatabaseConnector dbc = ((QueryPanel) tabbedPane.getSelectedComponent()).getDatabaseConnector();
                     
                     AddDataDialog dialog = new AddDataDialog(frame, tabbedPane, tableEnum, tableData, dbc);
+                    dialog.setVisible(true);
                 }
             });
             editMenu.add(addDataItem);
