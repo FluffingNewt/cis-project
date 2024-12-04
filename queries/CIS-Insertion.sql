@@ -1,7 +1,5 @@
 USE [CSC312-CISTeamProject];
 
-
-
 insert into CollegeCodes (collegeCode, collegeName) values
 ('CLA', 'College of Liberal Arts and Sciences'),
 ('EGR', 'The School of Engineering'),
@@ -11,7 +9,16 @@ insert into CollegeCodes (collegeCode, collegeName) values
 ('CHP', 'College of Health Professions')
 ;
 
-
+insert into Instructors (lastName, firstName, department, office, phoneNum, email) values
+('Allen'     , 'Bob'         , 'CS' , 'WSC 232'  , '2817' , 'ALLEN_R@mercer.edu'),
+('Digh'      , 'Andy'        , 'CS' , 'WSC 221'  , '2816' , 'DIGH_AD@mercer.edu'),
+('Cozart'    , 'David'       , 'CS' , 'WSC 220'  , '4087' , 'COZART_DL@mercer.edu'),
+('Kaur'      , 'Mehakpreet'  , 'CS' , 'WSC 224'  , '2819' , 'KAUR_M@mercer.edu'),
+('Malik'     , 'Adeel'       , 'CS' , 'WSC 223'  , '2306' , 'MALIK_AA@mercer.edu'),
+('Pounds'    , 'Andrew'      , 'CS' , 'WSC 231'  , '5627' , 'POUNDS_AJ@mercer.edu'),
+('Yerby'     , 'Johnathan'   , 'CS' , 'WSC 228'  , '2601' , 'YERBY_JM@mercer.edu'),
+('Zhao'      , 'Martin'      , 'CS' , 'WSC 224'  , '2452' , 'ZHAO_MQ@mercer.edu')
+;
 
 insert into Courses (courseID, courseName, courseDescription, department, collegeCode, creditHours) values
 ('CSC 125', 'Introduction to Computing', 'An introduction to computer systems with emphasis on the central processing unit, memory units, input and output devices, data communications, operating systems, computer software, programming concepts, and the impact of computers on society. Students will learn to use popular software packages for applications such as word processing, spreadsheets, and database systems.', 'CS', 'CLA', 3),
@@ -38,7 +45,6 @@ insert into Courses (courseID, courseName, courseDescription, department, colleg
 ('CSC 380', 'Artificial Intelligence', 'An introduction to the problem domains of artificial intelligence and to the principles and techniques used to design systems that acquire knowledge and demonstrate intelligent responses. Particular areas studied include deterministic and heuristic search techniques appropriate for large problem spaces, formal methods of knowledge representation and logical reasoning, natural language understanding, and neural nets.', 'CS', 'CLA', 3),
 ('CSC 398', 'Internship in Computer Science', 'An intensive practicum experience at an approved business, organization, or academic institution. Students, under the direction of a faculty member and an on-site supervisor, must engage in projects or assignments requiring at least three on-site hours per week for every hour of credit. Students will learn through observation, regular discussions with the on-site supervisor and Mercer faculty member, and written reflection. In addition, students may be required to attend training events, workshops or weekly seminars. May be repeated for a total of 9 hours of credit. Graded S/U.', 'CS', 'CLA', 1),
 ('CSC 399', 'Independent Study', 'Independent Study is an opportunity for students to pursue an in-depth study of a particular topic in computer science that has not been covered in the curriculum. Topics will be chosen in consultation with a faculty member who will direct the student�s work. The course may be repeated for credit.', 'CS', 'CLA', 1),
-
 ('MAT 095', 'Intermediate Algebra', 'An introductory course in algebra including fundamental algebraic operations, factoring, algebraic fractions, equations and inequalities, exponents, and radicals. Credit does not count toward graduation.', 'MAT', 'CLA', 3),
 ('MAT 104', 'Mathematical Ideas', 'An introduction to mathematical ideas including classical proofs, real-world applications such as probability and risk, and abstractions such as infinite sets and graph theory.', 'MAT', 'CLA', 3),
 ('MAT 131', 'College Algebra: Functions and Graphs', 'Study of graphs and functions, including linear, quadratic, polynomial, rational, exponential, and logarithmic functions.', 'MAT', 'CLA', 3),
@@ -57,12 +63,26 @@ insert into Courses (courseID, courseName, courseDescription, department, colleg
 ('MAT 481', 'Real Analysis I', 'Rigorous study of real numbers, continuity, differentiability, integrability, and topology.', 'MAT', 'CLA', 3),
 ('MAT 482', 'Real Analysis II', 'Continuation of MAT 481, delving deeper into the analysis of real numbers and associated mathematical properties.', 'MAT', 'CLA', 3),
 ('MAT 499', 'Senior Seminar in Mathematics', 'A capstone course designed to help students synthesize their mathematics education and deliver mathematical presentations.', 'MAT', 'CLA', 1),
-
 ('STA 126', 'Introductory Statistics', 'Introductory statistics including the collection of data, descriptive statistics, probability, and inference. Topics include sampling methods, experiments, numerical and graphical descriptive methods, correlation and regression, contingency tables, probability concepts and distributions, confidence intervals, and hypothesis testing for means and proportions', 'STA', 'CLA', 3),
 ('STA 310', 'Computational Statistics', 'An introduction to statistical computing. The course will cover basic statistical programming: plotting graphics, data structures and manipulation, data visualization, simulation studies and Monte Carlo methods, and resampling methods such as the bootstrap. Students will learn how to use popular packages and techniques at the forefront of statistical computing.', 'STA', 'CLA', 3)
 ;
 
-
+insert into Students (MUID4, lastName, firstName, state, major, minor, advisor) values
+('5883' , 'Cutchens'   , 'Kyle'     , 'GA' , 'IST'       , 'MAT' , NULL),
+('3571' , 'Bassett'    , 'Liam'     , 'GA' , 'IST'       , NULL  , NULL),
+('0205' , 'Donnelly'   , 'Alex'     , 'GA' , 'TCO & IST' , NULL  , NULL),
+('0506' , 'Elton'      , 'Sandy'    , 'GA' , 'IST'       , NULL  , NULL),
+('7085' , 'Garcia'     , 'Alvaro'   , 'NY' , 'CS & IST'  , NULL  , NULL),
+('7246' , 'Mandani'    , 'Tazeena'  , 'GA' , 'FIN'       , 'SPN' , NULL),
+('1273' , 'Mathis'     , 'Chris'    , 'GA' , 'IST'       , 'CSC' , NULL),
+('3767' , 'Mitchell'   , 'Daniel'   , 'GA' , 'IST'       , 'CSC' , NULL),
+('8018' , 'Mohan'      , 'Anu'      , 'GA' , 'IST'       , NULL  , NULL),
+('9522' , 'Neal-Tysor' , 'Amoria'   , 'NC' , 'IST'       , 'COM' , NULL),
+('6096' , 'Pulliam'    , 'Jeremiah' , 'AL' , 'TCO & IST' , NULL  , NULL),
+('8962' , 'Rangan'     , 'Anish'    , 'GA' , 'FIN & IST' , NULL  , NULL),
+('8715' , 'Stuckey'    , 'Willow'   , 'GA' , 'IST'       , 'STA' , NULL),
+('6301' , 'Guest'      , 'Davis'    , 'GA' , 'CS'        , 'MAT' , 2)
+;
 
 insert into Prerequisites (courseID, prereqCourseID, prereqDescription) values
 ('CSC 204', 'MAT 095', 'MAT 095 or placement in MAT 133 or higher'),
@@ -90,7 +110,6 @@ insert into Prerequisites (courseID, prereqCourseID, prereqDescription) values
 ('CSC 380', 'MAT 225', NULL),
 ('CSC 398', NULL, 'to be determined by the instructor'),
 ('CSC 399', NULL, 'by permission of instructor'),
-
 ('MAT 131', 'MAT 095', 'MAT 095 or a specific score on the Math Index or Math Placement Test'),
 ('MAT 133', 'MAT 095', 'MAT 095 or a specific score on the Math Index or Math Placement Test'),
 ('MAT 141', 'MAT 131', 'MAT 131 or a specific score on the Math Index or Math Placement Test'),
@@ -107,49 +126,12 @@ insert into Prerequisites (courseID, prereqCourseID, prereqDescription) values
 ('MAT 462', 'MAT 461', NULL),
 ('MAT 481', 'MAT 293', NULL),
 ('MAT 482', 'MAT 481', NULL),
-
 ('STA 310', 'STA 126', NULL)
 ;
-
-
-
-insert into Instructors (lastName, firstName, department, office, phoneNum, email) values
-('Allen'     , 'Bob'         , 'CS' , 'WSC 232'  , '2817' , 'ALLEN_R@mercer.edu'),
-('Digh'      , 'Andy'        , 'CS' , 'WSC 221'  , '2816' , 'DIGH_AD@mercer.edu'),
-('Cozart'    , 'David'       , 'CS' , 'WSC 220'  , '4087' , 'COZART_DL@mercer.edu'),
-('Kaur'      , 'Mehakpreet'  , 'CS' , 'WSC 224'  , '2819' , 'KAUR_M@mercer.edu'),
-('Malik'     , 'Adeel'       , 'CS' , 'WSC 223'  , '2306' , 'MALIK_AA@mercer.edu'),
-('Pounds'    , 'Andrew'      , 'CS' , 'WSC 231'  , '5627' , 'POUNDS_AJ@mercer.edu'),
-('Yerby'     , 'Johnathan'   , 'CS' , 'WSC 228'  , '2601' , 'YERBY_JM@mercer.edu'),
-('Zhao'      , 'Martin'      , 'CS' , 'WSC 224'  , '2452' , 'ZHAO_MQ@mercer.edu')
-;
-
-
-
-insert into Students (MUID4, lastName, firstName, state, major, minor, advisor) values
-('5883' , 'Cutchens'   , 'Kyle'     , 'GA' , 'IST'       , 'MAT' , NULL),
-('3571' , 'Bassett'    , 'Liam'     , 'GA' , 'IST'       , NULL  , NULL),
-('0205' , 'Donnelly'   , 'Alex'     , 'GA' , 'TCO & IST' , NULL  , NULL),
-('0506' , 'Elton'      , 'Sandy'    , 'GA' , 'IST'       , NULL  , NULL),
-('7085' , 'Garcia'     , 'Alvaro'   , 'NY' , 'CS & IST'  , NULL  , NULL),
-('7246' , 'Mandani'    , 'Tazeena'  , 'GA' , 'FIN'       , 'SPN' , NULL),
-('1273' , 'Mathis'     , 'Chris'    , 'GA' , 'IST'       , 'CSC' , NULL),
-('3767' , 'Mitchell'   , 'Daniel'   , 'GA' , 'IST'       , 'CSC' , NULL),
-('8018' , 'Mohan'      , 'Anu'      , 'GA' , 'IST'       , NULL  , NULL),
-('9522' , 'Neal-Tysor' , 'Amoria'   , 'NC' , 'IST'       , 'COM' , NULL),
-('6096' , 'Pulliam'    , 'Jeremiah' , 'AL' , 'TCO & IST' , NULL  , NULL),
-('8962' , 'Rangan'     , 'Anish'    , 'GA' , 'FIN & IST' , NULL  , NULL),
-('8715' , 'Stuckey'    , 'Willow'   , 'GA' , 'IST'       , 'STA' , NULL),
-('6301' , 'Guest'      , 'Davis'    , 'GA' , 'CS'        , 'MAT' , 2)
-;
-
-
 
 insert into Enrollments (MUID4, courseID, instructorID, section, semester, classroom) values
 ('6301', 'CSC 312', 8, 1, 'Fall24', 'WSC 212')
 ;
-
-
 
 select * from [Courses];
 select * from [Instructors];
