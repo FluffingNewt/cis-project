@@ -16,7 +16,7 @@ public class CollegeInformationSystem {
 
         SwingUtilities.invokeLater(() -> {
             JFrame frame = new JFrame("College Management System");
-            frame.setSize(800, 600);
+            frame.setSize(850, 600);
             
 
             JTabbedPane tabbedPane = new JTabbedPane();

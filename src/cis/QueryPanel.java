@@ -11,6 +11,13 @@ import util.FileIO;
 
 public class QueryPanel extends JPanel {
 
+    private final static Color MAIN_COLOR = new Color(247, 104, 0);
+    private final static Color SECONDARY_COLOR = new Color(201, 201, 201);
+
+    private final static Font boldHeader = new Font("Arial", Font.BOLD, 14);
+    private final static Font boldCell = new Font("Arial", Font.BOLD, 12);
+    private final static Font normalCell = new Font("Arial", Font.PLAIN, 12);
+
     private DatabaseConnector dbc = new DatabaseConnector();
 
     private TableEnum table;
@@ -43,17 +50,43 @@ public class QueryPanel extends JPanel {
         try {
             DefaultTableModel tableModel = dbc.getQueryData(this.table);
             tableData.setModel(tableModel);
+
+            int dataRowHeight = boldCell.getSize() + 5; // Font size + padding (10px extra)
+            tableData.setRowHeight(dataRowHeight);  // Set height for data rows
             
             // Table formatting
-            Font boldFont = new Font("Arial", Font.BOLD, 14);
-            tableData.getTableHeader().setFont(boldFont);
+            tableData.getTableHeader().setDefaultRenderer(new DefaultTableCellRenderer() {
+                @Override
+                public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+                    JLabel label = (JLabel) super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+                    label.setHorizontalAlignment(SwingConstants.LEFT);
+                    label.setVerticalAlignment(SwingConstants.CENTER);
+                    label.setBorder(BorderFactory.createCompoundBorder(
+                        UIManager.getBorder("TableHeader.cellBorder"),
+                        BorderFactory.createEmptyBorder(0, 3, 0, 5)
+                    ));
+                    label.setBackground(MAIN_COLOR);
+                    label.setFont(boldHeader);
+                    return label;
+                }
+            });
 
             tableData.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
                 @Override
                 public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
                     JLabel label = (JLabel) super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
                 
-                    label.setHorizontalAlignment(SwingConstants.CENTER);
+                    label.setHorizontalAlignment(SwingConstants.LEFT);
+                    label.setVerticalAlignment(SwingConstants.CENTER);
+                    label.setBorder(BorderFactory.createEmptyBorder(2, 5, 0, 5));
+
+                    if (column == 0) {
+                        label.setBackground(SECONDARY_COLOR);
+                        label.setFont(boldCell);
+                    } else {
+                        label.setBackground(Color.WHITE);
+                        label.setFont(normalCell);
+                    }
                 
                     return label;
                 }
