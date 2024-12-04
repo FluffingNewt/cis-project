@@ -75,7 +75,7 @@ create table Enrollments (
 create table Prerequisites (
 	prerequisiteID    int IDENTITY(1,1) PRIMARY KEY,
 	courseID          varchar(10) NOT NULL,
-	prereqCourseID    varchar(10) NULL,
+	prereqCourseID    varchar(10),
 	prereqDescription varchar(255),
 
 	FOREIGN KEY(courseID)       references Courses(courseID),

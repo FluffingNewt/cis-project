@@ -15,7 +15,7 @@ public class CollegeInformationSystem {
     public static void main(String[] args) {
 
         SwingUtilities.invokeLater(() -> {
-            JFrame frame = new JFrame("College Management System");
+            JFrame frame = new JFrame("College Information System 2024");
             frame.setSize(850, 600);
             
 
