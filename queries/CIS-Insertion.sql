@@ -65,7 +65,7 @@ insert into Courses (courseID, courseName, courseDescription, department, colleg
 
 
 insert into Prerequisites (courseID, prereqCourseID, prereqDescription) values
-('CSC 204', NULL, 'MAT 095 or placement in MAT 133 or higher'),
+('CSC 204', 'MAT 095', 'MAT 095 or placement in MAT 133 or higher'),
 ('CSC 205', 'CSC 204', NULL),
 ('CSC 212', NULL, 'competence in a programming language'),
 ('CSC 245', 'CSC 205', NULL),
@@ -83,8 +83,8 @@ insert into Prerequisites (courseID, prereqCourseID, prereqDescription) values
 ('CSC 323', 'CSC 204', NULL),
 ('CSC 325', 'CSC 245', NULL),
 ('CSC 330', 'CSC 245', NULL),
-('CSC 335', NULL, 'MAT 192 and ability to write programs in a high-level computer language'),
-('CSC 340', NULL, 'MAT 225; the ability to write programs in a high-level computer language'),
+('CSC 335', 'MAT 192', 'MAT 192 and the ability to write programs in a high-level computer language'),
+('CSC 340', 'MAT 225', 'MAT 225 and the ability to write programs in a high-level computer language'),
 ('CSC 360', 'CSC 205', NULL),
 ('CSC 380', 'CSC 245', NULL),
 ('CSC 380', 'MAT 225', NULL),
