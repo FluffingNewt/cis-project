@@ -126,21 +126,21 @@ insert into Instructors (lastName, firstName, department, office, phoneNum, emai
 
 
 
-insert into Students (MUID4, lastName, firstName, state, major, minor) values
-('5883' , 'Cutchens'   , 'Kyle'     , 'GA' , 'IST'       , 'MAT'),
-('3571' , 'Bassett'    , 'Liam'     , 'GA' , 'IST'       , NULL),
-('0205' , 'Donnelly'   , 'Alex'     , 'GA' , 'TCO & IST' , NULL),
-('0506' , 'Elton'      , 'Sandy'    , 'GA' , 'IST'       , NULL),
-('7085' , 'Garcia'     , 'Alvaro'   , 'NY' , 'CS & IST'  , NULL),
-('7246' , 'Mandani'    , 'Tazeena'  , 'GA' , 'FIN'       , 'SPN'),
-('1273' , 'Mathis'     , 'Chris'    , 'GA' , 'IST'       , 'CSC'),
-('3767' , 'Mitchell'   , 'Daniel'   , 'GA' , 'IST'       , 'CSC'),
-('8018' , 'Mohan'      , 'Anu'      , 'GA' , 'IST'       , NULL),
-('9522' , 'Neal-Tysor' , 'Amoria'   , 'NC' , 'IST'       , 'COM'),
-('6096' , 'Pulliam'    , 'Jeremiah' , 'AL' , 'TCO & IST' , NULL),
-('8962' , 'Rangan'     , 'Anish'    , 'GA' , 'FIN & IST' , NULL),
-('8715' , 'Stuckey'    , 'Willow'   , 'GA' , 'IST'       , 'STA'),
-('6301' , 'Guest'      , 'Davis'    , 'GA' , 'CS'        , 'MAT')
+insert into Students (MUID4, lastName, firstName, state, major, minor, advisor) values
+('5883' , 'Cutchens'   , 'Kyle'     , 'GA' , 'IST'       , 'MAT' , NULL),
+('3571' , 'Bassett'    , 'Liam'     , 'GA' , 'IST'       , NULL  , NULL),
+('0205' , 'Donnelly'   , 'Alex'     , 'GA' , 'TCO & IST' , NULL  , NULL),
+('0506' , 'Elton'      , 'Sandy'    , 'GA' , 'IST'       , NULL  , NULL),
+('7085' , 'Garcia'     , 'Alvaro'   , 'NY' , 'CS & IST'  , NULL  , NULL),
+('7246' , 'Mandani'    , 'Tazeena'  , 'GA' , 'FIN'       , 'SPN' , NULL),
+('1273' , 'Mathis'     , 'Chris'    , 'GA' , 'IST'       , 'CSC' , NULL),
+('3767' , 'Mitchell'   , 'Daniel'   , 'GA' , 'IST'       , 'CSC' , NULL),
+('8018' , 'Mohan'      , 'Anu'      , 'GA' , 'IST'       , NULL  , NULL),
+('9522' , 'Neal-Tysor' , 'Amoria'   , 'NC' , 'IST'       , 'COM' , NULL),
+('6096' , 'Pulliam'    , 'Jeremiah' , 'AL' , 'TCO & IST' , NULL  , NULL),
+('8962' , 'Rangan'     , 'Anish'    , 'GA' , 'FIN & IST' , NULL  , NULL),
+('8715' , 'Stuckey'    , 'Willow'   , 'GA' , 'IST'       , 'STA' , NULL),
+('6301' , 'Guest'      , 'Davis'    , 'GA' , 'CS'        , 'MAT' , 2)
 ;
 
 

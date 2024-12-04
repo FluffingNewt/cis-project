@@ -1,7 +1,9 @@
 package util;
+import javax.swing.*;
 import java.sql.*;
+import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
-import enums.Tables;
+import enums.TableEnum;
 
 public class DatabaseConnector {
 
@@ -22,12 +24,12 @@ public class DatabaseConnector {
 
 
 
-    public DefaultTableModel getQueryData(Tables t) {
+    public DefaultTableModel getQueryData(TableEnum t) {
         DefaultTableModel table = new DefaultTableModel();
 
         try {
             Statement stmt = connection.createStatement();
-            ResultSet rset = stmt.executeQuery(t.getQuery());
+            ResultSet rset = stmt.executeQuery(t.getSelectQuery());
             ResultSetMetaData metaD = rset.getMetaData();
 
             int cols = metaD.getColumnCount();
@@ -50,11 +52,24 @@ public class DatabaseConnector {
 
 
 
-    /**
-     * Closes the connection.
-     */
-    public void closeConnection() {
-        try { connection.close(); }
-        catch (SQLException e) { System.err.println("Failed to close connection: " + e.getMessage()); }
+    public void insert(TableEnum tEnum, ArrayList<JTextField> inputFields) {
+        String query     = tEnum.getInsertQuery();
+        Class<?>[] types = tEnum.getInsertTypes();
+
+        try (PreparedStatement pstmt = connection.prepareStatement(query)) {
+            
+            for (int i = 0; i < inputFields.size(); i++) {
+
+                String text = inputFields.get(i).getText();
+
+                if (text.equals("NULL")) pstmt.setNull(i + 1, java.sql.Types.INTEGER);
+                else if (types[i] == Integer.class)    pstmt.setInt(i + 1, Integer.parseInt(text));
+                else                              pstmt.setObject(i + 1, text);
+            }
+
+            int rowsAffected = pstmt.executeUpdate();
+            System.out.println("Insert successful. Rows affected: " + rowsAffected);
+
+        } catch (SQLException e) { e.printStackTrace(); }
     }
 }

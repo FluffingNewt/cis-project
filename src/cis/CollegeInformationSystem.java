@@ -1,7 +1,11 @@
 package cis;
+import enums.TableEnum;
+import util.DatabaseConnector;
+
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.plaf.basic.BasicTabbedPaneUI;
+import javax.swing.table.TableModel;
 
 
 public class CollegeInformationSystem {
@@ -42,11 +46,17 @@ public class CollegeInformationSystem {
 
             // "Edit" menu
             JMenu editMenu = new JMenu("Edit");
-            // JMenuItem preferencesItem = new JMenuItem("Preferences");
-            // preferencesItem.addActionListener(e -> 
-            //     JOptionPane.showMessageDialog(frame, "Edit Preferences here.")
-            // );
-            // editMenu.add(preferencesItem);
+            JMenuItem addDataItem = new JMenuItem("Add table row data");
+            addDataItem.addActionListener(e -> {
+                if (tabbedPane.getSelectedComponent() instanceof QueryPanel) {
+                    TableEnum tableEnum = ((QueryPanel) tabbedPane.getSelectedComponent()).getTableEnum();
+                    JTable tableData = ((QueryPanel) tabbedPane.getSelectedComponent()).getTableData();
+                    DatabaseConnector dbc = ((QueryPanel) tabbedPane.getSelectedComponent()).getDatabaseConnector();
+                    
+                    AddDataDialog dialog = new AddDataDialog(frame, tabbedPane, tableEnum, tableData, dbc);
+                }
+            });
+            editMenu.add(addDataItem);
             
             menuBar.add(fileMenu);
             menuBar.add(editMenu);

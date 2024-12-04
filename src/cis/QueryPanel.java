@@ -5,7 +5,7 @@ import java.io.File;
 
 import javax.swing.table.DefaultTableModel;
 import javax.swing.filechooser.*;
-import enums.Tables;
+import enums.TableEnum;
 import util.DatabaseConnector;
 import util.FileIO;
 
@@ -13,19 +13,19 @@ public class QueryPanel extends JPanel {
 
     private DatabaseConnector dbc = new DatabaseConnector();
 
-    private Tables table;
+    private TableEnum table;
     private JTable tableData;
 
     public QueryPanel(String tabName) {
         setLayout(new BorderLayout());
 
         switch (tabName) {
-            case "Enrollments"   : this.table = Tables.ENROLLMENTS; break;
-            case "Courses"       : this.table = Tables.COURSES;     break;
-            case "Prerequisites" : this.table = Tables.PREREQS;     break;
-            case "Students"      : this.table = Tables.STUDENTS;    break;
-            case "Instructors"   : this.table = Tables.INSTRUCTORS; break;
-            case "CollegeCodes"  : this.table = Tables.CCODES;      break;
+            case "Enrollments"   : this.table = TableEnum.ENROLLMENTS; break;
+            case "Courses"       : this.table = TableEnum.COURSES;     break;
+            case "Prerequisites" : this.table = TableEnum.PREREQS;     break;
+            case "Students"      : this.table = TableEnum.STUDENTS;    break;
+            case "Instructors"   : this.table = TableEnum.INSTRUCTORS; break;
+            case "CollegeCodes"  : this.table = TableEnum.CCODES;      break;
         }
 
         JLabel label = new JLabel("Content for " + tabName, SwingConstants.CENTER);
@@ -52,7 +52,14 @@ public class QueryPanel extends JPanel {
         add(scrollPane, BorderLayout.CENTER);
     }
 
-
+    public void refreshTableData() {
+        try {
+            DefaultTableModel tableModel = dbc.getQueryData(this.table);
+            tableData.setModel(tableModel);
+            tableData.revalidate();
+            tableData.repaint();
+        } catch (Exception e) { e.printStackTrace(); }
+    }
 
     public void exportToCSV() {
         JFileChooser fileChooser = new JFileChooser();
@@ -70,6 +77,20 @@ public class QueryPanel extends JPanel {
             if (tableData != null) FileIO.exportTableToCSV(tableData, filePath);
             else JOptionPane.showMessageDialog(this, "No data to export.");
         }
+    }
+
+
+
+    public TableEnum getTableEnum() {
+        return this.table;
+    }
+
+    public JTable getTableData() {
+        return this.tableData;
+    }
+
+    public DatabaseConnector getDatabaseConnector() {
+        return this.dbc;
     }
 
 }
