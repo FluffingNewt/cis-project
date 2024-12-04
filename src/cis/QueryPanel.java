@@ -2,8 +2,9 @@ package cis;
 import javax.swing.*;
 import java.awt.*;
 import java.io.File;
-
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
 import javax.swing.filechooser.*;
 import enums.TableEnum;
 import util.DatabaseConnector;
@@ -43,6 +44,22 @@ public class QueryPanel extends JPanel {
         try {
             DefaultTableModel tableModel = dbc.getQueryData(this.table);
             tableData.setModel(tableModel);
+            
+            // Table formatting
+            Font boldFont = new Font("Arial", Font.BOLD, 14);
+            tableData.getTableHeader().setFont(boldFont);
+
+            tableData.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
+                @Override
+                public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+                    JLabel label = (JLabel) super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+                
+                    label.setHorizontalAlignment(SwingConstants.CENTER);
+                
+                    return label;
+                }
+            });
+
         } catch (Exception e) {
             JLabel errorLabel = new JLabel("Error retrieving data: " + e.getMessage(), SwingConstants.CENTER);
             removeAll();
@@ -78,8 +95,6 @@ public class QueryPanel extends JPanel {
             else JOptionPane.showMessageDialog(this, "No data to export.");
         }
     }
-
-
 
     public TableEnum getTableEnum() {
         return this.table;
