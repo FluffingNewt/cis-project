@@ -20,7 +20,13 @@ public class FileIO {
             // Write data rows
             for (int i = 0; i < rowCount; i++) {
                 for (int j = 0; j < columnCount; j++) {
-                    fw.write(model.getValueAt(i, j).toString());
+                    if (model.getColumnName(j).contains("Description")) fw.write("\"");
+
+                    String outStr = "NULL";
+                    if (model.getValueAt(i, j) != null) outStr = model.getValueAt(i, j).toString();
+                    fw.write(outStr);
+
+                    if (model.getColumnName(j).contains("Description")) fw.write("\"");
                     if (j < columnCount - 1) fw.write(",");
                 }
                 fw.write("\n");
