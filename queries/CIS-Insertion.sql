@@ -1,4 +1,4 @@
-USE [CSC312-CISTeamProject];
+use [CSC312-CISTeamProject];
 
 insert into CollegeCodes (collegeCode, collegeName) values
 ('CLA', 'College of Liberal Arts and Sciences'),
@@ -10,14 +10,15 @@ insert into CollegeCodes (collegeCode, collegeName) values
 ;
 
 insert into Instructors (lastName, firstName, department, office, phoneNum, email) values
-('Allen'     , 'Bob'         , 'CS' , 'WSC 232'  , '2817' , 'ALLEN_R@mercer.edu'),
-('Digh'      , 'Andy'        , 'CS' , 'WSC 221'  , '2816' , 'DIGH_AD@mercer.edu'),
-('Cozart'    , 'David'       , 'CS' , 'WSC 220'  , '4087' , 'COZART_DL@mercer.edu'),
-('Kaur'      , 'Mehakpreet'  , 'CS' , 'WSC 224'  , '2819' , 'KAUR_M@mercer.edu'),
-('Malik'     , 'Adeel'       , 'CS' , 'WSC 223'  , '2306' , 'MALIK_AA@mercer.edu'),
-('Pounds'    , 'Andrew'      , 'CS' , 'WSC 231'  , '5627' , 'POUNDS_AJ@mercer.edu'),
-('Yerby'     , 'Johnathan'   , 'CS' , 'WSC 228'  , '2601' , 'YERBY_JM@mercer.edu'),
-('Zhao'      , 'Martin'      , 'CS' , 'WSC 224'  , '2452' , 'ZHAO_MQ@mercer.edu')
+('Allen'  , 'Bob'         , 'CS' , 'WSC 232'  , '2817' , 'ALLEN_R@mercer.edu'),
+('Digh'   , 'Andy'        , 'CS' , 'WSC 221'  , '2816' , 'DIGH_AD@mercer.edu'),
+('Cozart' , 'David'       , 'CS' , 'WSC 220'  , '4087' , 'COZART_DL@mercer.edu'),
+('Kaur'   , 'Mehakpreet'  , 'CS' , 'WSC 224'  , '2819' , 'KAUR_M@mercer.edu'),
+('Malik'  , 'Adeel'       , 'CS' , 'WSC 223'  , '2306' , 'MALIK_AA@mercer.edu'),
+('Pounds' , 'Andrew'      , 'CS' , 'WSC 231'  , '5627' , 'POUNDS_AJ@mercer.edu'),
+('Yerby'  , 'Johnathan'   , 'CS' , 'WSC 228'  , '2601' , 'YERBY_JM@mercer.edu'),
+('Zhao'   , 'Martin'      , 'CS' , 'WSC 224'  , '2452' , 'ZHAO_MQ@mercer.edu'),
+('Ekong'  , 'Donald'      , 'EGR', 'EGC 223C' , '2271' , 'EKONG_D@mercer.edu')
 ;
 
 insert into Courses (courseID, courseName, courseDescription, department, collegeCode, creditHours) values
@@ -44,7 +45,14 @@ insert into Courses (courseID, courseName, courseDescription, department, colleg
 ('CSC 360', 'Theory of Data Communications', 'Consideration of the design of communication line characteristics, modems, synchronous and asynchronous line protocols, error detection and correction schemes including polynomial codes, basic multiplexing, and concentration.', 'CS', 'CLA', 3),
 ('CSC 380', 'Artificial Intelligence', 'An introduction to the problem domains of artificial intelligence and to the principles and techniques used to design systems that acquire knowledge and demonstrate intelligent responses. Particular areas studied include deterministic and heuristic search techniques appropriate for large problem spaces, formal methods of knowledge representation and logical reasoning, natural language understanding, and neural nets.', 'CS', 'CLA', 3),
 ('CSC 398', 'Internship in Computer Science', 'An intensive practicum experience at an approved business, organization, or academic institution. Students, under the direction of a faculty member and an on-site supervisor, must engage in projects or assignments requiring at least three on-site hours per week for every hour of credit. Students will learn through observation, regular discussions with the on-site supervisor and Mercer faculty member, and written reflection. In addition, students may be required to attend training events, workshops or weekly seminars. May be repeated for a total of 9 hours of credit. Graded S/U.', 'CS', 'CLA', 1),
-('CSC 399', 'Independent Study', 'Independent Study is an opportunity for students to pursue an in-depth study of a particular topic in computer science that has not been covered in the curriculum. Topics will be chosen in consultation with a faculty member who will direct the student�s work. The course may be repeated for credit.', 'CS', 'CLA', 1),
+('CSC 408', 'Data Science Seminar', 'This course demonstrates how data science is applied within multiple disciplines. Students will learn how to present the results of their application of data science effectively to a variety of audiences in both written and oral forms.', 'CS', 'CLA', 2),
+('CSC 415', 'Graphics Simulation and Visualization', 'Advanced topics in computer graphics such as viewing in three dimensions, representation of three-dimensional surfaces and shapes, texture mapping, hierarchical kinematic and solid modeling, rendering and animation of articulated objects, scientific visualization, and physical aspects of simulation such as collision detection and gravity will be covered. The design and implementation of a graphics project focusing on real-time simulation will be required.', 'CS', 'CLA', 3),
+('CSC 435', 'High Performance Scientific Computing', 'An introduction to modern methods in large-scale scientific computing. Topics will include architectures for high performance and parallel computing utilizing both shared memory and distributed memory hierarchies. Algorithms for parallel computing, as well as parallel implementations of codes used in numerical methods, will be studied and their performance enhancements examined. Emphasis will be placed on code development, debugging, testing, and optimization on high performance systems. Students will complete projects related to current computational problem in science and/or engineering.', 'CS', 'CLA', 3),
+('CSC 460', 'Operating Systems', 'A survey of functions of an operating system and the algorithms used in its implementation. Input/output programming, interrupt processing, memory management, demand paging, segmentation, processor management, scheduling, synchronization, multiprocessing, device management, dead-lock avoidance, information management, and interdependencies', 'CS', 'CLA', 3),
+('CSC 480', 'Software Engineering I', 'A study of current techniques used in the development of large-scale software projects. Topics include requirements analysis, functional specification, systems design, implementation, testing, and maintenance.', 'CS', 'CLA', 3),
+('CSC 481', 'Software Engineering II', 'As a continuation of CSC 480, this course focuses on a team project to develop a large-scale software product. The project will emphasize the software development lifecycle, including identifying and defining the requirements for the system, as well as designing, implementing, testing, and maintaining the system. Oral and written presentation of progress and final results are required. ', 'CS', 'CLA', 3),
+('CSC 485', 'Topics in Computer Science', 'Students must engage in projects or assignments requiring at least one contact hour, or equivalent, per week for every hour of credit. May be repeated with different topics for a maximum of 6 hours of credit. ', 'CS', 'CLA', 3),
+('CSC 499', 'Undergraduate Research', 'Individual research projects in computer science are planned, performed, and presented in written and oral form. Students must engage in projects or assignments requiring at least one contact hour, or equivalent, per week for every hour of credit Significant student results will be submitted to a conference or a journal. Projects are selected in consultation with a CSC faculty member. May be repeated for a maximum of 6 hours of credit. This course is typically taken in conjunction with an Honors project', 'CS', 'CLA', 3),
 ('MAT 095', 'Intermediate Algebra', 'An introductory course in algebra including fundamental algebraic operations, factoring, algebraic fractions, equations and inequalities, exponents, and radicals. Credit does not count toward graduation.', 'MAT', 'CLA', 3),
 ('MAT 104', 'Mathematical Ideas', 'An introduction to mathematical ideas including classical proofs, real-world applications such as probability and risk, and abstractions such as infinite sets and graph theory.', 'MAT', 'CLA', 3),
 ('MAT 131', 'College Algebra: Functions and Graphs', 'Study of graphs and functions, including linear, quadratic, polynomial, rational, exponential, and logarithmic functions.', 'MAT', 'CLA', 3),
@@ -68,20 +76,18 @@ insert into Courses (courseID, courseName, courseDescription, department, colleg
 ;
 
 insert into Students (MUID4, lastName, firstName, state, major, minor, advisor) values
-('5883' , 'Cutchens'   , 'Kyle'     , 'GA' , 'IST'       , 'MAT' , NULL),
-('3571' , 'Bassett'    , 'Liam'     , 'GA' , 'IST'       , NULL  , NULL),
-('0205' , 'Donnelly'   , 'Alex'     , 'GA' , 'TCO & IST' , NULL  , NULL),
-('0506' , 'Elton'      , 'Sandy'    , 'GA' , 'IST'       , NULL  , NULL),
-('7085' , 'Garcia'     , 'Alvaro'   , 'NY' , 'CS & IST'  , NULL  , NULL),
-('7246' , 'Mandani'    , 'Tazeena'  , 'GA' , 'FIN'       , 'SPN' , NULL),
-('1273' , 'Mathis'     , 'Chris'    , 'GA' , 'IST'       , 'CSC' , NULL),
-('3767' , 'Mitchell'   , 'Daniel'   , 'GA' , 'IST'       , 'CSC' , NULL),
-('8018' , 'Mohan'      , 'Anu'      , 'GA' , 'IST'       , NULL  , NULL),
-('9522' , 'Neal-Tysor' , 'Amoria'   , 'NC' , 'IST'       , 'COM' , NULL),
-('6096' , 'Pulliam'    , 'Jeremiah' , 'AL' , 'TCO & IST' , NULL  , NULL),
-('8962' , 'Rangan'     , 'Anish'    , 'GA' , 'FIN & IST' , NULL  , NULL),
-('8715' , 'Stuckey'    , 'Willow'   , 'GA' , 'IST'       , 'STA' , NULL),
-('6301' , 'Guest'      , 'Davis'    , 'GA' , 'CS'        , 'MAT' , 2)
+('5883' , 'Cutchens'   , 'Kyle'     , 'GA' , 'IST' , 'MAT' , NULL),
+('3571' , 'Bassett'    , 'Liam'     , 'GA' , 'IST' , NULL  , NULL),
+('0506' , 'Elton'      , 'Sandy'    , 'GA' , 'IST' , NULL  , NULL),
+('7246' , 'Mandani'    , 'Tazeena'  , 'GA' , 'FIN' , 'SPN' , NULL),
+('1273' , 'Mathis'     , 'Chris'    , 'GA' , 'IST' , 'CSC' , NULL),
+('3767' , 'Mitchell'   , 'Daniel'   , 'GA' , 'IST' , 'CSC' , NULL),
+('8018' , 'Mohan'      , 'Anu'      , 'GA' , 'IST' , NULL  , NULL),
+('9522' , 'Neal-Tysor' , 'Amoria'   , 'NC' , 'IST' , 'COM' , NULL),
+('8715' , 'Stuckey'    , 'Willow'   , 'GA' , 'IST' , 'STA' , NULL),
+('6301' , 'Guest'      , 'Davis'    , 'GA' , 'CSC' , 'MAT' , 2),
+('5699' , 'Leslie'     , 'Austen'   , 'GA' , 'ECE' , NULL  , 9),
+('1997' , 'Trawick'    , 'Matthew'  , 'GA' , 'CSC' , 'MAT' , 1)
 ;
 
 insert into Prerequisites (courseID, prereqCourseID, prereqDescription) values
@@ -109,7 +115,16 @@ insert into Prerequisites (courseID, prereqCourseID, prereqDescription) values
 ('CSC 380', 'CSC 245', NULL),
 ('CSC 380', 'MAT 225', NULL),
 ('CSC 398', NULL, 'to be determined by the instructor'),
-('CSC 399', NULL, 'by permission of instructor'),
+('CSC 408', 'CSC 308', 'CSC 308 and the completion of the Application of Data Science requirement'),
+('CSC 415', 'CSC 315', NULL),
+('CSC 435', 'CSC 335', NULL),
+('CSC 460', 'CSC 245', 'CSC 245, 322, and MAT 225'),
+('CSC 460', 'CSC 322', 'CSC 245, 322, and MAT 225'),
+('CSC 460', 'MAT 225', 'CSC 245, 322, and MAT 225'),
+('CSC 480', 'CSC 245', NULL),
+('CSC 481', 'CSC 480', NULL),
+('CSC 485', NULL, 'consent of instructor'),
+('CSC 499', NULL, 'consent of instructor'),
 ('MAT 131', 'MAT 095', 'MAT 095 or a specific score on the Math Index or Math Placement Test'),
 ('MAT 133', 'MAT 095', 'MAT 095 or a specific score on the Math Index or Math Placement Test'),
 ('MAT 141', 'MAT 131', 'MAT 131 or a specific score on the Math Index or Math Placement Test'),
@@ -130,12 +145,10 @@ insert into Prerequisites (courseID, prereqCourseID, prereqDescription) values
 ;
 
 insert into Enrollments (MUID4, courseID, instructorID, section, semester, classroom) values
-('6301', 'CSC 312', 8, 1, 'Fall24', 'WSC 212')
+('6301', 'CSC 312', 8, 1, 'Fall24', 'WSC 212'),
+('6301', 'CSC 315', 6, 1, 'Fall24', 'GSC 218'),
+('6301', 'CSC 480', 8, 1, 'Fall24', 'WSC 212'),
+('5699', 'CSC 312', 8, 1, 'Fall24', 'WSC 212'),
+('1997', 'CSC 312', 8, 1, 'Fall24', 'WSC 212'),
+('1997', 'CSC 330', 6, 1, 'Fall24', 'WSC 212')
 ;
-
-select * from [Courses];
-select * from [Instructors];
-select * from [Students];
-select * from [Enrollments];
-select * from [CollegeCodes];
-select * from [Prerequisites];

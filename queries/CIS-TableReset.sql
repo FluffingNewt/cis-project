@@ -1,15 +1,11 @@
-USE [CSC312-CISTeamProject];
+use [CSC312-CISTeamProject];
 
-
-
-drop table [Enrollments];
-drop table [Prerequisites];
-drop table [Courses];
-drop table [Students];
-drop table [Instructors];
-drop table [CollegeCodes];
-
-
+drop table if exists [Enrollments];
+drop table if exists [Prerequisites];
+drop table if exists [Courses];
+drop table if exists [Students];
+drop table if exists [Instructors];
+drop table if exists [CollegeCodes];
 
 create table CollegeCodes (
 	collegeCode varchar(3)   PRIMARY KEY,
@@ -81,11 +77,3 @@ create table Prerequisites (
 	FOREIGN KEY(courseID)       references Courses(courseID),
 	FOREIGN KEY(prereqCourseID) references Courses(courseID)
 );
-
-
-select * from [Courses];
-select * from [Instructors];
-select * from [Students];
-select * from [Enrollments];
-select * from [CollegeCodes];
-select * from [Prerequisites];
