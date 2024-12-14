@@ -8,8 +8,8 @@ drop table if exists [Instructors];
 drop table if exists [CollegeCodes];
 
 create table CollegeCodes (
-	collegeCode varchar(3)   PRIMARY KEY,
-	collegeName varchar(150) NOT NULL
+	collegeCode varchar(3)   PRIMARY KEY,	-- ex. CLA
+	collegeName varchar(150) NOT NULL		-- ex. College of Liberal...
 );
 
 
@@ -54,12 +54,12 @@ create table Courses (
 
 
 create table Enrollments (
-	MUID4        varchar(4)  NOT NULL,
-	courseID     varchar(10) NOT NULL,
-	instructorID int,
-	section      int         NOT NULL,
-	semester     varchar(10) NOT NULL,
-	classroom    varchar(10)
+	MUID4        varchar(4)  NOT NULL,	-- ex. 1234
+	courseID     varchar(10) NOT NULL,	-- ex. CSC 312
+	instructorID int,					-- ex. 1 -> Zhao
+	section      int         NOT NULL,	-- ex. 1
+	semester     varchar(10) NOT NULL,	-- ex. Fall24
+	classroom    varchar(10)			-- WSC 312
 
 	FOREIGN KEY (MUID4)        references Students(MUID4),
 	FOREIGN KEY (courseID)     references Courses(courseID),
@@ -69,10 +69,10 @@ create table Enrollments (
 
 
 create table Prerequisites (
-	prerequisiteID    int IDENTITY(1,1) PRIMARY KEY,
-	courseID          varchar(10) NOT NULL,
-	prereqCourseID    varchar(10),
-	prereqDescription varchar(MAX),
+	prerequisiteID    int IDENTITY(1,1) PRIMARY KEY,	-- ex. 1
+	courseID          varchar(10) NOT NULL,				-- ex. CSC 312
+	prereqCourseID    varchar(10),						-- ex. CSC 245
+	prereqDescription varchar(MAX),						-- ex. NULL
 
 	FOREIGN KEY(courseID)       references Courses(courseID),
 	FOREIGN KEY(prereqCourseID) references Courses(courseID)
