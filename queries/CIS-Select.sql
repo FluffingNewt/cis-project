@@ -8,7 +8,6 @@ select * from [Enrollments];
 select * from [Prerequisites];
 
 
-/*
 
 -- Query 1: Viewing the top 5 courses with the highest credit hours.
 SELECT TOP 5 *
@@ -96,5 +95,3 @@ WHERE MUID4 IN (
 	FROM Enrollments
 	WHERE courseID = 'CSC 312'
 );
-
-*/
