@@ -19,10 +19,8 @@ public class AddDataDialog extends JDialog {
         setLocationRelativeTo(parent);
         setResizable(false);
 
-        // Set up GridBagLayout
         GridBagConstraints gbc = new GridBagConstraints();
 
-        // Panel for input fields
         JPanel inputPanel = new JPanel(new GridBagLayout());
         int inputFieldNum = tableEnum.getInsertValues().length;
 
@@ -45,7 +43,6 @@ public class AddDataDialog extends JDialog {
         gbc.gridy = inputFieldNum;
         inputPanel.add(new JLabel(), gbc);
 
-        // Panel for buttons
         JPanel  buttonPanel  = new JPanel();
         JButton submitButton = new JButton("Submit");
         JButton cancelButton = new JButton("Cancel");
@@ -55,9 +52,7 @@ public class AddDataDialog extends JDialog {
         add(inputPanel, BorderLayout.CENTER);
         add(buttonPanel, BorderLayout.SOUTH);
 
-        // Add action listeners
         submitButton.addActionListener(_ -> {
-
             if (anyEmptyFiles()) {
                 JOptionPane.showMessageDialog(
                     this, 
@@ -72,7 +67,6 @@ public class AddDataDialog extends JDialog {
                 }
                 dispose();
             }
-
         });
 
         cancelButton.addActionListener(_ -> dispose());
@@ -82,7 +76,6 @@ public class AddDataDialog extends JDialog {
         for (JTextField tf : inputFields) {
             if (tf.getText().isEmpty()) return true;
         }
-
         return false;
     }
 }

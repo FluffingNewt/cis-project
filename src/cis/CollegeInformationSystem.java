@@ -2,6 +2,7 @@ package cis;
 import enums.TableEnum;
 import util.DatabaseConnector;
 import java.awt.*;
+
 import javax.swing.*;
 import javax.swing.plaf.basic.BasicTabbedPaneUI;
 
@@ -16,6 +17,11 @@ public class CollegeInformationSystem {
 
         SwingUtilities.invokeLater(() -> {
             JFrame frame = new JFrame("College Information System 2024");
+
+            Image img = new ImageIcon("images/icon.png").getImage().getScaledInstance(32, 32, Image.SCALE_SMOOTH);
+            ImageIcon icon = new ImageIcon(img);
+            frame.setIconImage(icon.getImage());
+
             frame.setSize(850, 600);
             
 

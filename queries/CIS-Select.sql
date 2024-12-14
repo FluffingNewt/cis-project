@@ -92,7 +92,7 @@ ORDER BY 'Name Length' DESC;
 -- Query 10: Subqueries - Viewing students who are in the same class.
 SELECT MUID4, lastName, firstName, state, major, minor, advisor
 FROM Students
-WHERE MUID4 in (
+WHERE MUID4 IN (
 	SELECT MUID4
 	FROM Enrollments
 	WHERE courseID = 'CSC 312'

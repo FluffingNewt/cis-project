@@ -50,19 +50,11 @@ public enum TableEnum {
         this.insertTypes  = iTypes;
     }
 
-    public String getSelectQuery() {
-        return selectQuery;
-    }
+    public String getSelectQuery() { return selectQuery; }
 
-    public String getInsertQuery() {
-        return insertQuery;
-    }
+    public String getInsertQuery() { return insertQuery; }
 
-    public String[] getInsertValues() {
-        return insertValues;
-    }
+    public String[] getInsertValues() { return insertValues; }
 
-    public Class<?>[] getInsertTypes() {
-        return insertTypes;
-    }
+    public Class<?>[] getInsertTypes() { return insertTypes; }
 }

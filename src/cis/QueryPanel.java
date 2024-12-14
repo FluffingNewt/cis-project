@@ -2,12 +2,15 @@ package cis;
 import javax.swing.*;
 import java.awt.*;
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 import javax.swing.filechooser.*;
 import enums.TableEnum;
 import util.DatabaseConnector;
-import util.FileIO;
 
 public class QueryPanel extends JPanel {
 
@@ -51,10 +54,9 @@ public class QueryPanel extends JPanel {
             DefaultTableModel tableModel = dbc.getQueryData(this.table);
             tableData.setModel(tableModel);
 
-            int dataRowHeight = boldCell.getSize() + 5; // Font size + padding (10px extra)
-            tableData.setRowHeight(dataRowHeight);  // Set height for data rows
+            int dataRowHeight = boldCell.getSize() + 5;
+            tableData.setRowHeight(dataRowHeight);
             
-            // Table formatting
             tableData.getTableHeader().setDefaultRenderer(new DefaultTableCellRenderer() {
                 @Override
                 public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
@@ -123,21 +125,44 @@ public class QueryPanel extends JPanel {
 
             if (!filePath.endsWith(".csv")) filePath += ".csv";
 
-            if (tableData != null) FileIO.exportTableToCSV(tableData, filePath);
+            if (tableData != null) {
+                try (FileWriter fw = new FileWriter(filePath)) {
+                    TableModel model = tableData.getModel();
+                    int columnCount = model.getColumnCount();
+                    int rowCount = model.getRowCount();
+
+                    for (int i = 0; i < columnCount; i++) {
+                        fw.write(model.getColumnName(i));
+                        if (i < columnCount - 1) fw.write(",");
+                    }
+                    fw.write("\n");
+
+                    for (int i = 0; i < rowCount; i++) {
+                        for (int j = 0; j < columnCount; j++) {
+                            if (model.getColumnName(j).contains("Description")) fw.write("\"");
+
+                            String outStr = "NULL";
+                            if (model.getValueAt(i, j) != null) outStr = model.getValueAt(i, j).toString();
+                            fw.write(outStr);
+
+                            if (model.getColumnName(j).contains("Description")) fw.write("\"");
+                            if (j < columnCount - 1) fw.write(",");
+                        }
+                        fw.write("\n");
+                    }
+
+                    JOptionPane.showMessageDialog(null, "CSV export successful.");
+                } catch (IOException e) {
+                    JOptionPane.showMessageDialog(null, "Error exporting data: " + e.getMessage());
+                }
+            }
             else JOptionPane.showMessageDialog(this, "No data to export.");
         }
     }
 
-    public TableEnum getTableEnum() {
-        return this.table;
-    }
+    public TableEnum getTableEnum() { return this.table; }
 
-    public JTable getTableData() {
-        return this.tableData;
-    }
+    public JTable getTableData() { return this.tableData; }
 
-    public DatabaseConnector getDatabaseConnector() {
-        return this.dbc;
-    }
-
+    public DatabaseConnector getDatabaseConnector() { return this.dbc; }
 }
