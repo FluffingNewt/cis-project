@@ -72,7 +72,7 @@ create table Prerequisites (
 	prerequisiteID    int IDENTITY(1,1) PRIMARY KEY,
 	courseID          varchar(10) NOT NULL,
 	prereqCourseID    varchar(10),
-	prereqDescription varchar(255),
+	prereqDescription varchar(MAX),
 
 	FOREIGN KEY(courseID)       references Courses(courseID),
 	FOREIGN KEY(prereqCourseID) references Courses(courseID)
